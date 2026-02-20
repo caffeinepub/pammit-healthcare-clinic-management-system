@@ -1,0 +1,167 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-proper-aria-labels-to-all-interactive-elements-including-buttons-form-inputs-dialogs-and-navigation-links-throughout-the-application",
+      "featureTitle": "Add proper ARIA labels to all interactive elements including buttons, form inputs, dialogs, and navigation links throughout the application",
+      "files": [
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/LoginScreen.tsx",
+        "frontend/src/components/ProfileSetupModal.tsx",
+        "frontend/src/pages/Dashboard.tsx"
+      ],
+      "components": [
+        "authorization@3.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-proper-keyboard-navigation-support-across-all-pages-including-dashboard-patients-staff-finance-reports-backup-attendance-and-sessions-pages-with-focus-management",
+      "featureTitle": "Ensure proper keyboard navigation support across all pages including Dashboard, Patients, Staff, Finance, Reports, Backup, Attendance, and Sessions pages with focus management",
+      "files": [
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/ProfileSetupModal.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "authorization@3.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-semantic-html-structure-with-proper-heading-hierarchy-h1-h2-h3-across-all-pages-and-ensure-landmark-regions-header-nav-main-footer-are-properly-defined",
+      "featureTitle": "Add semantic HTML structure with proper heading hierarchy (h1, h2, h3) across all pages and ensure landmark regions (header, nav, main, footer) are properly defined",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/LoginScreen.tsx",
+        "frontend/src/pages/Dashboard.tsx"
+      ],
+      "components": [
+        "authorization@3.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-improve-color-contrast-ratios-to-meet-wcag-aa-standards-4-5-1-for-normal-text-3-1-for-large-text-across-all-text-and-interactive-elements-in-both-light-and-dark-modes",
+      "featureTitle": "Improve color contrast ratios to meet WCAG AA standards (4.5:1 for normal text, 3:1 for large text) across all text and interactive elements in both light and dark modes",
+      "files": [
+        "frontend/src/components/Header.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/Dashboard.tsx"
+      ],
+      "components": [
+        "authorization@3.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-screen-reader-announcements-for-dynamic-content-updates-including-successful-operations-errors-loading-states-and-data-changes-using-aria-live-regions",
+      "featureTitle": "Add screen reader announcements for dynamic content updates including successful operations, errors, loading states, and data changes using ARIA live regions",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/LiveRegion.tsx",
+        "frontend/src/hooks/useAnnouncer.ts"
+      ],
+      "components": [
+        "authorization@3.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-all-form-validation-errors-are-accessible-with-clear-error-messages-associated-with-their-respective-form-fields-using-aria-describedby-or-aria-invalid-attributes",
+      "featureTitle": "Ensure all form validation errors are accessible with clear error messages associated with their respective form fields using aria-describedby or aria-invalid attributes",
+      "files": [
+        "frontend/src/components/ProfileSetupModal.tsx"
+      ],
+      "components": [
+        "authorization@3.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-skip-navigation-link-at-the-top-of-the-page-to-allow-keyboard-users-to-bypass-repetitive-navigation-and-jump-directly-to-main-content",
+      "featureTitle": "Add skip navigation link at the top of the page to allow keyboard users to bypass repetitive navigation and jump directly to main content",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/SkipToContent.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "authorization@3.0.0",
+        "blob-storage@4.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

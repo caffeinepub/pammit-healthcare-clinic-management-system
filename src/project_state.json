@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Healthcare management application with patient sessions, expenses tracking, and search/filter capabilities",
+  "architectural_notes": [
+    "Application includes patient session management with expense tracking",
+    "Search and filter functionality needed across patient records",
+    "Authentication system needs to be revised (Internet Identity removal requested)"
+  ],
+  "known_issues": [
+    "Login issues reported - Internet Identity causing problems",
+    "Build failures occurred when processing complex multi-feature requests"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-add-proper-aria-labels-to-all-interactive-elements-including-buttons-form-inputs-dialogs-and-navigation-links-throughout-the-application",
+      "title": "Add proper ARIA labels to all interactive elements including buttons, form inputs, dialogs, and navigation links throughout the application",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-proper-keyboard-navigation-support-across-all-pages-including-dashboard-patients-staff-finance-reports-backup-attendance-and-sessions-pages-with-focus-management",
+      "title": "Ensure proper keyboard navigation support across all pages including Dashboard, Patients, Staff, Finance, Reports, Backup, Attendance, and Sessions pages with focus management",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-semantic-html-structure-with-proper-heading-hierarchy-h1-h2-h3-across-all-pages-and-ensure-landmark-regions-header-nav-main-footer-are-properly-defined",
+      "title": "Add semantic HTML structure with proper heading hierarchy (h1, h2, h3) across all pages and ensure landmark regions (header, nav, main, footer) are properly defined",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-color-contrast-ratios-to-meet-wcag-aa-standards-4-5-1-for-normal-text-3-1-for-large-text-across-all-text-and-interactive-elements-in-both-light-and-dark-modes",
+      "title": "Improve color contrast ratios to meet WCAG AA standards (4.5:1 for normal text, 3:1 for large text) across all text and interactive elements in both light and dark modes",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-screen-reader-announcements-for-dynamic-content-updates-including-successful-operations-errors-loading-states-and-data-changes-using-aria-live-regions",
+      "title": "Add screen reader announcements for dynamic content updates including successful operations, errors, loading states, and data changes using ARIA live regions",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-all-form-validation-errors-are-accessible-with-clear-error-messages-associated-with-their-respective-form-fields-using-aria-describedby-or-aria-invalid-attributes",
+      "title": "Ensure all form validation errors are accessible with clear error messages associated with their respective form fields using aria-describedby or aria-invalid attributes",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-skip-navigation-link-at-the-top-of-the-page-to-allow-keyboard-users-to-bypass-repetitive-navigation-and-jump-directly-to-main-content",
+      "title": "Add skip navigation link at the top of the page to allow keyboard users to bypass repetitive navigation and jump directly to main content",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Patient session filter by patient name",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Universal search by name or date across all app features",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Auto backup functionality",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Remove all Internet Identity authentication",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Add accessibility improvements",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

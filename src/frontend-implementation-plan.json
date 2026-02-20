@@ -1,0 +1,446 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add accessibility improvements to Medical Management App",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add proper ARIA labels to all interactive elements including buttons, form inputs, dialogs, and navigation links throughout the application",
+      "acceptanceCriteria": [
+        "All buttons have descriptive aria-label attributes",
+        "Form inputs have associated labels or aria-label attributes",
+        "Dialog components have aria-labelledby and aria-describedby attributes",
+        "Navigation menu items have descriptive labels"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add aria-label attributes to theme toggle button, navigation menu items, and login button. Ensure the navigation menu button has aria-expanded and aria-controls attributes for the mobile menu state."
+        },
+        {
+          "path": "frontend/src/components/LoginScreen.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to the login button and ensure feature showcase cards have descriptive ARIA attributes for screen readers."
+        },
+        {
+          "path": "frontend/src/components/PatientDialog.tsx",
+          "operation": "modify",
+          "description": "Add aria-labelledby pointing to the dialog title and aria-describedby for the dialog description. Ensure all form inputs have associated labels or aria-label attributes. Add aria-label to tab controls and treatment action buttons."
+        },
+        {
+          "path": "frontend/src/components/StaffDialog.tsx",
+          "operation": "modify",
+          "description": "Add aria-labelledby and aria-describedby to the dialog. Ensure all form fields (name, position, phone, pay rate, qualifications) have proper label associations or aria-label attributes."
+        },
+        {
+          "path": "frontend/src/components/SpendingDialog.tsx",
+          "operation": "modify",
+          "description": "Add ARIA attributes to dialog and ensure category select, description input, amount input, and date picker have proper labels or aria-label attributes."
+        },
+        {
+          "path": "frontend/src/components/MiscExpenseDialog.tsx",
+          "operation": "modify",
+          "description": "Add aria-labelledby and aria-describedby to dialog. Ensure all form controls have proper ARIA labeling."
+        },
+        {
+          "path": "frontend/src/components/ConfirmDialog.tsx",
+          "operation": "modify",
+          "description": "Add aria-labelledby pointing to dialog title and aria-describedby pointing to description. Add aria-label to Cancel and Continue buttons with loading state announcements."
+        },
+        {
+          "path": "frontend/src/components/ProfileSetupModal.tsx",
+          "operation": "modify",
+          "description": "Add aria-labelledby and aria-describedby to modal dialog. Ensure name input has proper label association and required field indication with aria-required."
+        },
+        {
+          "path": "frontend/src/components/AIPrescriptionPanel.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to template selection buttons and the add treatment button. Ensure the ReactQuill editor has proper ARIA labeling for accessibility."
+        },
+        {
+          "path": "frontend/src/pages/PatientsPage.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to search input, Add Patient button, Reset All button, and action buttons (edit/delete) in the table. Ensure table has proper role and aria-label attributes."
+        },
+        {
+          "path": "frontend/src/pages/StaffPage.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to search input, Add Staff button, Reset All button, and table action buttons for edit and delete operations."
+        },
+        {
+          "path": "frontend/src/pages/FinancePage.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to tab controls, Add Expense buttons, and table action buttons. Ensure financial summary cards have descriptive ARIA labels."
+        },
+        {
+          "path": "frontend/src/pages/StaffAttendancePage.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to staff filter select, Clock In/Out buttons, and time edit buttons in the attendance table. Ensure date pickers have proper ARIA labeling."
+        },
+        {
+          "path": "frontend/src/pages/PatientSessionsPage.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to patient filter select, Check In/Out buttons, and edit time buttons. Ensure session table has proper ARIA attributes."
+        },
+        {
+          "path": "frontend/src/pages/DataBackupPage.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to Export, Import, Merge, and Reset buttons. Add descriptive ARIA labels to file input controls and backup record table."
+        },
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to navigation cards and ensure statistics summary cards have descriptive ARIA labels for screen readers. Add aria-label to recent patients table."
+        },
+        {
+          "path": "frontend/src/pages/PatientReportPage.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to export buttons (Print, PDF, Excel/CSV) and ensure the report table has proper ARIA attributes."
+        },
+        {
+          "path": "frontend/src/pages/StaffReportPage.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to export buttons and ensure statistics cards and report table have descriptive ARIA labels."
+        },
+        {
+          "path": "frontend/src/pages/OwnerDashboardPage.tsx",
+          "operation": "modify",
+          "description": "Add aria-label to staff filter select, date range inputs, and View on Map buttons. Ensure location history table has proper ARIA attributes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Ensure proper keyboard navigation support across all pages with focus management including focus trapping in modals and escape key handling",
+      "acceptanceCriteria": [
+        "All interactive elements are reachable via Tab key",
+        "Focus is trapped within modal dialogs",
+        "Escape key closes dialogs and dropdowns",
+        "Visual focus indicators are clearly visible"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useFocusTrap.ts",
+          "operation": "create",
+          "description": "Create a custom React hook that implements focus trapping for modal dialogs. The hook should handle focus cycling within the modal, return focus to the trigger element on close, and support Escape key handling."
+        },
+        {
+          "path": "frontend/src/hooks/useKeyboardNavigation.ts",
+          "operation": "create",
+          "description": "Create a custom hook that provides keyboard navigation utilities including Escape key handling, Enter key submission, and arrow key navigation for lists and menus."
+        },
+        {
+          "path": "frontend/src/components/PatientDialog.tsx",
+          "operation": "modify",
+          "description": "Integrate useFocusTrap hook to trap focus within the dialog. Ensure Escape key closes the dialog and Tab navigation cycles through all interactive elements. Set initial focus to the first input field on dialog open."
+        },
+        {
+          "path": "frontend/src/components/StaffDialog.tsx",
+          "operation": "modify",
+          "description": "Add focus trap using useFocusTrap hook. Implement Escape key handling and ensure proper focus management on dialog open and close."
+        },
+        {
+          "path": "frontend/src/components/SpendingDialog.tsx",
+          "operation": "modify",
+          "description": "Implement focus trapping and keyboard navigation. Ensure Tab key cycles through category select, description, amount, and date fields properly."
+        },
+        {
+          "path": "frontend/src/components/MiscExpenseDialog.tsx",
+          "operation": "modify",
+          "description": "Add focus trap and keyboard navigation support. Handle Escape key to close dialog and return focus to trigger button."
+        },
+        {
+          "path": "frontend/src/components/ConfirmDialog.tsx",
+          "operation": "modify",
+          "description": "Implement focus trap to keep focus within the confirmation dialog. Set initial focus to the Cancel button and support Escape key for dismissal."
+        },
+        {
+          "path": "frontend/src/components/ProfileSetupModal.tsx",
+          "operation": "modify",
+          "description": "Add focus trap for the profile setup modal. Ensure focus moves to the name input on modal open and cannot escape the modal until dismissed."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Improve keyboard navigation for the navigation menu. Ensure Tab key navigates through all menu items and Escape key closes dropdown menus."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Enhance focus visible styles using :focus-visible pseudo-class to provide clear visual focus indicators with high-contrast outlines (e.g., 2-3px solid outline with appropriate color). Ensure focus indicators are visible in both light and dark themes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add semantic HTML structure with proper heading hierarchy and landmark regions across all pages",
+      "acceptanceCriteria": [
+        "Each page has a single h1 element",
+        "Heading levels follow logical hierarchy without skipping levels",
+        "Header, navigation, main content, and footer use semantic HTML5 elements",
+        "Lists use proper ul/ol and li elements"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Wrap the header content in a semantic <header> element and the navigation menu in a <nav> element with aria-label=\"Main navigation\". Ensure proper heading structure if any headings exist."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Ensure the footer uses semantic <footer> element and proper structure for content grouping."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap the main page content area in a semantic <main> element with role=\"main\" to establish the main landmark region. Ensure the page routing structure supports proper landmark regions."
+        },
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "modify",
+          "description": "Add a single h1 heading for the page title (\"Dashboard\"). Use h2 for section headings (\"Summary Statistics\", \"Quick Actions\", \"Recent Patients\"). Ensure heading hierarchy is logical without skipping levels."
+        },
+        {
+          "path": "frontend/src/pages/PatientsPage.tsx",
+          "operation": "modify",
+          "description": "Add h1 for \"Patients\" page title. Use h2 for any subsections. Ensure patient list uses semantic list elements or table structure appropriately."
+        },
+        {
+          "path": "frontend/src/pages/StaffPage.tsx",
+          "operation": "modify",
+          "description": "Add h1 for \"Staff\" page title. Use h2 for subsections. Ensure staff list uses proper table or list semantic structure."
+        },
+        {
+          "path": "frontend/src/pages/FinancePage.tsx",
+          "operation": "modify",
+          "description": "Add h1 for \"Finance\" page title. Use h2 for tab sections (\"Patient Expenses\", \"Miscellaneous Expenses\"). Use h3 for summary card headings if appropriate."
+        },
+        {
+          "path": "frontend/src/pages/StaffAttendancePage.tsx",
+          "operation": "modify",
+          "description": "Add h1 for \"Staff Attendance\" page title. Use h2 for subsections like \"Clock In/Out\" and \"Attendance Records\". Ensure heading hierarchy is maintained."
+        },
+        {
+          "path": "frontend/src/pages/PatientSessionsPage.tsx",
+          "operation": "modify",
+          "description": "Add h1 for \"Patient Sessions\" page title. Use h2 for subsections (\"Check In/Out\", \"Session History\"). Maintain proper heading hierarchy."
+        },
+        {
+          "path": "frontend/src/pages/DataBackupPage.tsx",
+          "operation": "modify",
+          "description": "Add h1 for \"Data Backup\" page title. Use h2 for sections (\"Export Data\", \"Import Data\", \"Backup History\"). Ensure semantic structure for backup records list."
+        },
+        {
+          "path": "frontend/src/pages/PatientReportPage.tsx",
+          "operation": "modify",
+          "description": "Add h1 for \"Patient Report\" page title. Use h2 for subsections like \"Summary\" and \"Patient Details\". Ensure proper heading hierarchy."
+        },
+        {
+          "path": "frontend/src/pages/StaffReportPage.tsx",
+          "operation": "modify",
+          "description": "Add h1 for \"Staff Report\" page title. Use h2 for subsections (\"Statistics\", \"Staff Details\"). Maintain logical heading structure."
+        },
+        {
+          "path": "frontend/src/pages/OwnerDashboardPage.tsx",
+          "operation": "modify",
+          "description": "Add h1 for \"Owner Dashboard\" page title. Use h2 for subsections (\"Location Tracking\", \"Filter Options\"). Ensure proper heading hierarchy."
+        },
+        {
+          "path": "frontend/src/components/LoginScreen.tsx",
+          "operation": "modify",
+          "description": "Ensure the login screen has h1 for \"Pammit Healthcare Clinic\" and uses semantic structure for feature cards. Wrap main content in a <main> landmark if appropriate."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Improve color contrast ratios to meet WCAG AA standards (4.5:1 for normal text, 3:1 for large text) across all text and interactive elements in both light and dark modes",
+      "acceptanceCriteria": [
+        "All text meets minimum contrast ratios",
+        "Button text is clearly readable against background colors",
+        "Error messages and alerts have sufficient contrast",
+        "Both light and dark themes meet contrast requirements"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Review and update OKLCH color values in the :root and .dark theme definitions to ensure all text and interactive elements meet WCAG AA contrast requirements. Specifically audit primary, secondary, muted, accent colors against their backgrounds. Adjust foreground/background color pairs to achieve minimum 4.5:1 ratio for normal text and 3:1 for large text."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Verify that custom color definitions (sidebar, border, input, ring, etc.) meet WCAG AA contrast standards. Update color values if necessary to ensure sufficient contrast in both light and dark modes."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Audit button and link colors in the header navigation to ensure they meet contrast requirements. Update className values if necessary to use higher-contrast color combinations."
+        },
+        {
+          "path": "frontend/src/components/PatientDialog.tsx",
+          "operation": "modify",
+          "description": "Review form input, button, and tab control colors to ensure sufficient contrast. Update color classes if needed to meet WCAG AA standards."
+        },
+        {
+          "path": "frontend/src/components/ConfirmDialog.tsx",
+          "operation": "modify",
+          "description": "Ensure action button colors (Cancel, Continue) have sufficient contrast against their backgrounds in both themes. Verify destructive action styling meets accessibility requirements."
+        },
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "modify",
+          "description": "Audit statistics cards and navigation card colors for sufficient contrast. Update text and background color combinations to meet WCAG AA requirements."
+        },
+        {
+          "path": "frontend/src/components/ui/button.tsx",
+          "operation": "modify",
+          "description": "Review all button variant styles (default, destructive, outline, secondary, ghost, link) to ensure text colors meet contrast requirements against their background colors in both light and dark modes. Update color classes as needed."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add screen reader announcements for dynamic content updates including successful operations, errors, loading states, and data changes using ARIA live regions",
+      "acceptanceCriteria": [
+        "Success messages are announced to screen readers",
+        "Error messages are announced with appropriate urgency",
+        "Loading states provide feedback to screen readers",
+        "Data table updates are communicated"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/LiveRegion.tsx",
+          "operation": "create",
+          "description": "Create a reusable LiveRegion component that manages ARIA live region announcements. Support both polite and assertive announcement modes. Include methods for announcing success messages, errors, and loading states."
+        },
+        {
+          "path": "frontend/src/hooks/useAnnouncer.ts",
+          "operation": "create",
+          "description": "Create a custom hook that provides an API for announcing messages to screen readers. The hook should manage a live region state and provide functions like announce(message, mode) where mode can be 'polite' or 'assertive'."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add a global LiveRegion component at the app level to handle screen reader announcements throughout the application. Wire up the announcer context provider to make announcements available across all pages."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Integrate useAnnouncer hook into mutation hooks to announce success and error messages. For example, after adding a patient, announce \"Patient added successfully\". For errors, announce the error message with assertive mode."
+        },
+        {
+          "path": "frontend/src/pages/PatientsPage.tsx",
+          "operation": "modify",
+          "description": "Use useAnnouncer to announce loading states (\"Loading patients...\"), success messages (\"Patient added\", \"Patient updated\", \"Patient deleted\"), and errors. Announce when search/filter results change."
+        },
+        {
+          "path": "frontend/src/pages/StaffPage.tsx",
+          "operation": "modify",
+          "description": "Add screen reader announcements for staff CRUD operations, loading states, and search results using useAnnouncer hook."
+        },
+        {
+          "path": "frontend/src/pages/FinancePage.tsx",
+          "operation": "modify",
+          "description": "Announce tab changes, expense additions/updates/deletions, and loading states to screen readers. Use polite announcements for non-critical updates."
+        },
+        {
+          "path": "frontend/src/pages/StaffAttendancePage.tsx",
+          "operation": "modify",
+          "description": "Announce clock in/out success messages, time edit confirmations, and loading states using the announcer hook."
+        },
+        {
+          "path": "frontend/src/pages/PatientSessionsPage.tsx",
+          "operation": "modify",
+          "description": "Add announcements for check in/out operations, session updates, and filter changes to keep screen reader users informed."
+        },
+        {
+          "path": "frontend/src/pages/DataBackupPage.tsx",
+          "operation": "modify",
+          "description": "Announce export progress, import success/failure, merge operations, and reset confirmations using ARIA live regions."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Ensure all form validation errors are accessible with clear error messages associated with their respective form fields using aria-describedby or aria-invalid attributes",
+      "acceptanceCriteria": [
+        "Required fields are marked with aria-required",
+        "Invalid fields have aria-invalid='true'",
+        "Error messages are linked to inputs via aria-describedby",
+        "Error messages are announced when validation fails"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useFormValidation.ts",
+          "operation": "create",
+          "description": "Create a custom hook that provides form validation utilities with accessibility support. The hook should track field errors, validation state, and provide helpers to generate aria-describedby, aria-invalid, and aria-required attributes."
+        },
+        {
+          "path": "frontend/src/components/PatientDialog.tsx",
+          "operation": "modify",
+          "description": "Integrate form validation with accessibility attributes. Add aria-required to required fields (name, phone, diagnosis), aria-invalid when validation fails, and aria-describedby linking to error message elements. Ensure error messages have unique IDs and are associated with their inputs."
+        },
+        {
+          "path": "frontend/src/components/StaffDialog.tsx",
+          "operation": "modify",
+          "description": "Add aria-required to required fields (name, position, phone, pay rate). Add aria-invalid when validation fails. Link error messages to inputs using aria-describedby. Ensure validation errors are announced to screen readers."
+        },
+        {
+          "path": "frontend/src/components/SpendingDialog.tsx",
+          "operation": "modify",
+          "description": "Mark required fields with aria-required (category, description, amount, date). Add aria-invalid for invalid fields. Associate error messages with inputs via aria-describedby."
+        },
+        {
+          "path": "frontend/src/components/MiscExpenseDialog.tsx",
+          "operation": "modify",
+          "description": "Implement form validation accessibility attributes including aria-required, aria-invalid, and aria-describedby for all form fields with validation."
+        },
+        {
+          "path": "frontend/src/components/ProfileSetupModal.tsx",
+          "operation": "modify",
+          "description": "Add aria-required to the name input field. Add aria-invalid when validation fails. Link error message to input using aria-describedby. Ensure error is announced on validation failure."
+        },
+        {
+          "path": "frontend/src/pages/StaffAttendancePage.tsx",
+          "operation": "modify",
+          "description": "Add validation and accessibility attributes to time edit forms. Use aria-required, aria-invalid, and aria-describedby for time input fields."
+        },
+        {
+          "path": "frontend/src/pages/PatientSessionsPage.tsx",
+          "operation": "modify",
+          "description": "Implement form validation accessibility for check in/out forms and time edit dialogs. Add appropriate ARIA attributes for required and invalid states."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add skip navigation link at the top of the page to allow keyboard users to bypass repetitive navigation and jump directly to main content",
+      "acceptanceCriteria": [
+        "Skip link appears on keyboard focus",
+        "Skip link jumps to main content area",
+        "Skip link is visually hidden until focused",
+        "Skip link works consistently across all pages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SkipToContent.tsx",
+          "operation": "create",
+          "description": "Create a SkipToContent component that renders a visually hidden link at the top of the page. The link should become visible on focus and jump to the main content area when clicked. Use CSS to position it off-screen by default and bring it into view on focus."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add the SkipToContent component at the very top of the app render tree, before the Header component. Ensure the main content area has an id=\"main-content\" that the skip link targets."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add CSS styles for the skip link that keeps it visually hidden until focused. Use position absolute with negative coordinates or clip-path, then bring into view on :focus with appropriate positioning, padding, background, and z-index to ensure visibility above all content."
+        }
+      ]
+    }
+  ]
+}

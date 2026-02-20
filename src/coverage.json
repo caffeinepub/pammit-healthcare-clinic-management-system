@@ -1,0 +1,207 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-20T06:20:48.556Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 7,
+    "implemented": 7,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Add proper ARIA labels to all interactive elements including buttons, form inputs, dialogs, and navigation links throughout the application",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/LoginScreen.tsx",
+          "frontend/src/components/PatientDialog.tsx",
+          "frontend/src/components/StaffDialog.tsx",
+          "frontend/src/components/SpendingDialog.tsx",
+          "frontend/src/components/MiscExpenseDialog.tsx",
+          "frontend/src/components/ConfirmDialog.tsx",
+          "frontend/src/components/ProfileSetupModal.tsx",
+          "frontend/src/components/AIPrescriptionPanel.tsx",
+          "frontend/src/pages/PatientsPage.tsx",
+          "frontend/src/pages/StaffPage.tsx",
+          "frontend/src/pages/FinancePage.tsx",
+          "frontend/src/pages/StaffAttendancePage.tsx",
+          "frontend/src/pages/PatientSessionsPage.tsx",
+          "frontend/src/pages/DataBackupPage.tsx",
+          "frontend/src/pages/Dashboard.tsx",
+          "frontend/src/pages/PatientReportPage.tsx",
+          "frontend/src/pages/StaffReportPage.tsx",
+          "frontend/src/pages/OwnerDashboardPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/LoginScreen.tsx",
+          "frontend/src/components/ProfileSetupModal.tsx",
+          "frontend/src/pages/Dashboard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Ensure proper keyboard navigation support across all pages including Dashboard, Patients, Staff, Finance, Reports, Backup, Attendance, and Sessions pages with focus management",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useFocusTrap.ts",
+          "frontend/src/hooks/useKeyboardNavigation.ts",
+          "frontend/src/components/PatientDialog.tsx",
+          "frontend/src/components/StaffDialog.tsx",
+          "frontend/src/components/SpendingDialog.tsx",
+          "frontend/src/components/MiscExpenseDialog.tsx",
+          "frontend/src/components/ConfirmDialog.tsx",
+          "frontend/src/components/ProfileSetupModal.tsx",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ProfileSetupModal.tsx",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add semantic HTML structure with proper heading hierarchy (h1, h2, h3) across all pages and ensure landmark regions (header, nav, main, footer) are properly defined",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/pages/Dashboard.tsx",
+          "frontend/src/pages/PatientsPage.tsx",
+          "frontend/src/pages/StaffPage.tsx",
+          "frontend/src/pages/FinancePage.tsx",
+          "frontend/src/pages/StaffAttendancePage.tsx",
+          "frontend/src/pages/PatientSessionsPage.tsx",
+          "frontend/src/pages/DataBackupPage.tsx",
+          "frontend/src/pages/PatientReportPage.tsx",
+          "frontend/src/pages/StaffReportPage.tsx",
+          "frontend/src/pages/OwnerDashboardPage.tsx",
+          "frontend/src/components/LoginScreen.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/pages/Dashboard.tsx",
+          "frontend/src/components/LoginScreen.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Improve color contrast ratios to meet WCAG AA standards (4.5:1 for normal text, 3:1 for large text) across all text and interactive elements in both light and dark modes",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/PatientDialog.tsx",
+          "frontend/src/components/ConfirmDialog.tsx",
+          "frontend/src/pages/Dashboard.tsx",
+          "frontend/src/components/ui/button.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/pages/Dashboard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Add screen reader announcements for dynamic content updates including successful operations, errors, loading states, and data changes using ARIA live regions",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/LiveRegion.tsx",
+          "frontend/src/hooks/useAnnouncer.ts",
+          "frontend/src/App.tsx",
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/PatientsPage.tsx",
+          "frontend/src/pages/StaffPage.tsx",
+          "frontend/src/pages/FinancePage.tsx",
+          "frontend/src/pages/StaffAttendancePage.tsx",
+          "frontend/src/pages/PatientSessionsPage.tsx",
+          "frontend/src/pages/DataBackupPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/LiveRegion.tsx",
+          "frontend/src/hooks/useAnnouncer.ts",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Ensure all form validation errors are accessible with clear error messages associated with their respective form fields using aria-describedby or aria-invalid attributes",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useFormValidation.ts",
+          "frontend/src/components/PatientDialog.tsx",
+          "frontend/src/components/StaffDialog.tsx",
+          "frontend/src/components/SpendingDialog.tsx",
+          "frontend/src/components/MiscExpenseDialog.tsx",
+          "frontend/src/components/ProfileSetupModal.tsx",
+          "frontend/src/pages/StaffAttendancePage.tsx",
+          "frontend/src/pages/PatientSessionsPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ProfileSetupModal.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Add skip navigation link at the top of the page to allow keyboard users to bypass repetitive navigation and jump directly to main content",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/SkipToContent.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/SkipToContent.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/index.css"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/blob-storage/Mixin.mo",
+    "backend/blob-storage/Storage.mo",
+    "backend/http-outcalls/outcall.mo",
+    "build-request.json",
+    "build-template/Dockerfile",
+    "build-template/LICENSE",
+    "build-template/README.md",
+    "build-template/deploy.sh",
+    "build-template/icp.yaml",
+    "build-template/src/backend/canister.yaml",
+    "build-template/src/frontend/canister.yaml",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/LiveRegion.tsx",
+    "frontend/src/components/LoginScreen.tsx",
+    "frontend/src/components/ProfileSetupModal.tsx",
+    "frontend/src/components/SkipToContent.tsx",
+    "frontend/src/config.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useAnnouncer.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/Dashboard.tsx",
+    "frontend/src/ui-summary.json",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

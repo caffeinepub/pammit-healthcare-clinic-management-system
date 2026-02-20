@@ -1,0 +1,154 @@
+{
+  "kind": "build_request",
+  "title": "Add accessibility improvements",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add proper ARIA labels to all interactive elements including buttons, form inputs, dialogs, and navigation links throughout the application",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "yes make it accesible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All buttons have descriptive aria-label attributes",
+        "Form inputs have associated labels or aria-label attributes",
+        "Dialog components have aria-labelledby and aria-describedby attributes",
+        "Navigation menu items have descriptive labels"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Ensure proper keyboard navigation support across all pages including Dashboard, Patients, Staff, Finance, Reports, Backup, Attendance, and Sessions pages with focus management",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "yes make it accesible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All interactive elements are reachable via Tab key",
+        "Focus is trapped within modal dialogs",
+        "Escape key closes dialogs and dropdowns",
+        "Visual focus indicators are clearly visible"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add semantic HTML structure with proper heading hierarchy (h1, h2, h3) across all pages and ensure landmark regions (header, nav, main, footer) are properly defined",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "yes make it accesible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each page has a single h1 element",
+        "Heading levels follow logical hierarchy without skipping levels",
+        "Header, navigation, main content, and footer use semantic HTML5 elements",
+        "Lists use proper ul/ol and li elements"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Improve color contrast ratios to meet WCAG AA standards (4.5:1 for normal text, 3:1 for large text) across all text and interactive elements in both light and dark modes",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "yes make it accesible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All text meets minimum contrast ratios",
+        "Button text is clearly readable against background colors",
+        "Error messages and alerts have sufficient contrast",
+        "Both light and dark themes meet contrast requirements"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add screen reader announcements for dynamic content updates including successful operations, errors, loading states, and data changes using ARIA live regions",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "yes make it accesible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Success messages are announced to screen readers",
+        "Error messages are announced with appropriate urgency",
+        "Loading states provide feedback to screen readers",
+        "Data table updates are communicated"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Ensure all form validation errors are accessible with clear error messages associated with their respective form fields using aria-describedby or aria-invalid attributes",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "yes make it accesible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Required fields are marked with aria-required",
+        "Invalid fields have aria-invalid='true'",
+        "Error messages are linked to inputs via aria-describedby",
+        "Error messages are announced when validation fails"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add skip navigation link at the top of the page to allow keyboard users to bypass repetitive navigation and jump directly to main content",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "yes make it accesible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Skip link appears on keyboard focus",
+        "Skip link jumps to main content area",
+        "Skip link is visually hidden until focused",
+        "Skip link works consistently across all pages"
+      ]
+    }
+  ],
+  "constraints": [
+    "Maintain existing functionality while adding accessibility improvements",
+    "Do not modify backend main.mo file",
+    "Preserve current design and layout while improving accessibility"
+  ],
+  "nonGoals": [
+    "Redesigning the visual appearance",
+    "Adding new features beyond accessibility improvements",
+    "Changing the authentication system"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

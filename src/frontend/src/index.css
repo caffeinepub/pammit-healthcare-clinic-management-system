@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Medical blue theme - OKLCH color system */
+    --background: oklch(98% 0.01 210);
+    --foreground: oklch(20% 0.02 210);
+    --card: oklch(100% 0 0);
+    --card-foreground: oklch(20% 0.02 210);
+    --popover: oklch(100% 0 0);
+    --popover-foreground: oklch(20% 0.02 210);
+    --primary: oklch(55% 0.18 210);
+    --primary-foreground: oklch(98% 0.01 210);
+    --secondary: oklch(92% 0.02 210);
+    --secondary-foreground: oklch(20% 0.02 210);
+    --muted: oklch(94% 0.01 210);
+    --muted-foreground: oklch(50% 0.02 210);
+    --accent: oklch(88% 0.03 210);
+    --accent-foreground: oklch(20% 0.02 210);
+    --destructive: oklch(55% 0.20 25);
+    --destructive-foreground: oklch(98% 0.01 25);
+    --success: oklch(60% 0.15 145);
+    --success-foreground: oklch(98% 0.01 145);
+    --warning: oklch(70% 0.15 85);
+    --warning-foreground: oklch(20% 0.02 85);
+    --border: oklch(88% 0.02 210);
+    --input: oklch(88% 0.02 210);
+    --ring: oklch(55% 0.18 210);
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: oklch(18% 0.02 210);
+    --foreground: oklch(95% 0.01 210);
+    --card: oklch(20% 0.02 210);
+    --card-foreground: oklch(95% 0.01 210);
+    --popover: oklch(20% 0.02 210);
+    --popover-foreground: oklch(95% 0.01 210);
+    --primary: oklch(65% 0.18 210);
+    --primary-foreground: oklch(18% 0.02 210);
+    --secondary: oklch(28% 0.02 210);
+    --secondary-foreground: oklch(95% 0.01 210);
+    --muted: oklch(25% 0.02 210);
+    --muted-foreground: oklch(65% 0.02 210);
+    --accent: oklch(32% 0.03 210);
+    --accent-foreground: oklch(95% 0.01 210);
+    --destructive: oklch(55% 0.20 25);
+    --destructive-foreground: oklch(95% 0.01 25);
+    --success: oklch(60% 0.15 145);
+    --success-foreground: oklch(95% 0.01 145);
+    --warning: oklch(70% 0.15 85);
+    --warning-foreground: oklch(20% 0.02 85);
+    --border: oklch(28% 0.02 210);
+    --input: oklch(28% 0.02 210);
+    --ring: oklch(65% 0.18 210);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Enhanced focus visible styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+  
+  /* Skip to content link */
+  .skip-to-content {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:font-medium focus:shadow-lg;
+  }
+  
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+/* React Quill Editor Styles */
+.ql-container {
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+.ql-editor {
+  min-height: 300px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.ql-toolbar {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background: hsl(var(--muted));
+}
+
+.ql-container {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.dark .ql-toolbar {
+  background: hsl(var(--muted));
+  border-color: hsl(var(--border));
+}
+
+.dark .ql-container {
+  border-color: hsl(var(--border));
+}
+
+.dark .ql-editor {
+  color: hsl(var(--foreground));
+}
+
+.dark .ql-stroke {
+  stroke: hsl(var(--foreground));
+}
+
+.dark .ql-fill {
+  fill: hsl(var(--foreground));
+}
+
+.dark .ql-picker-label {
+  color: hsl(var(--foreground));
+}
+
+/* Print Styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+  
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  .print\:block {
+    display: block !important;
+  }
+  
+  header, footer, nav, button {
+    display: none !important;
+  }
+  
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  table {
+    page-break-inside: auto;
+  }
+  
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  
+  thead {
+    display: table-header-group;
+  }
+  
+  tfoot {
+    display: table-footer-group;
+  }
+}
