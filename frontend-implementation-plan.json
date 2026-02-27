@@ -1,0 +1,154 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Finance Section: Separate Category Reports with PDF/Excel Export and Editable Entries",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add dedicated report sections for each expense category with filtered lists, subtotals, and date range filters",
+      "acceptanceCriteria": [
+        "Each expense category renders in its own report section or tab",
+        "Each category section shows all entries belonging to that category",
+        "Each category section shows a subtotal sum for filtered entries",
+        "Date range filter applies per category report"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/FinancePage.tsx",
+          "operation": "modify",
+          "description": "Refactor the Finance page to display separate category report sections. Add a new tab or accordion structure where each SpendingCategory (rent, salaries, supplies, equipment, utilities, marketing, insurance, medications, misc) renders its own filtered report section. Each section includes: category title, date range picker (start/end dates), filtered expense entries table with columns for date, description, and amount, and a subtotal row showing the sum of filtered entries for that category. Use the existing useGetAllSpendings query and filter entries in the frontend by category and selected date range."
+        },
+        {
+          "path": "frontend/src/components/CategoryReportSection.tsx",
+          "operation": "create",
+          "description": "Create a reusable component that accepts category name, filtered expense entries array, date range state (startDate, endDate, setStartDate, setEndDate), and callbacks for edit, export PDF, export Excel, and print actions. Render the category title, date range pickers using shadcn/ui DatePicker or Input components, a table of expense entries with columns for date, description, amount, and an edit action button per row, and a subtotal row displaying the sum of all filtered entries. Include action buttons for Export PDF, Export Excel, and Print positioned above or below the table."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add Total Finance Summary Report section aggregating all expense categories with per-category totals and grand total",
+      "acceptanceCriteria": [
+        "A Total Finance Summary section is visible on the Finance page",
+        "Summary shows each category name alongside its total amount",
+        "Summary shows a grand total across all categories",
+        "Summary respects the selected date range filter"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/FinancePage.tsx",
+          "operation": "modify",
+          "description": "Add a Total Finance Summary section at the top or in a dedicated tab of the Finance page. Include a date range filter (start/end date pickers) that applies to the summary. Compute per-category totals by filtering all spendings by date range and grouping by category, then summing amounts within each group. Display a summary table with columns: Category Name, Total Amount. Add a final row showing the grand total (sum of all category totals). Include Export PDF, Export Excel, and Print buttons for the summary report."
+        },
+        {
+          "path": "frontend/src/components/FinanceSummarySection.tsx",
+          "operation": "create",
+          "description": "Create a component that accepts all spendings, a date range (startDate, endDate), and callbacks for export/print actions. Filter spendings by date range, compute totals per category, and render a summary table with category names and amounts. Include a grand total row at the bottom. Provide action buttons for Export PDF, Export Excel, and Print."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add PDF export functionality to each category report and Total Finance Summary",
+      "acceptanceCriteria": [
+        "Each category report has an 'Export PDF' button",
+        "Total Finance Summary has an 'Export PDF' button",
+        "Clicking 'Export PDF' downloads a formatted PDF of that report",
+        "PDF includes report title, date range, line items, and totals"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/pdfExport.ts",
+          "operation": "create",
+          "description": "Create utility functions for generating PDFs using a library such as jspdf or pdfmake (install via npm if not present). Export a function exportCategoryReportToPDF that accepts category name, filtered entries array, subtotal, and date range, then generates a PDF document with a header (report title, date range), a table of entries (columns: Date, Description, Amount), and a subtotal row. Export a function exportFinanceSummaryToPDF that accepts summary data (category totals, grand total, date range) and generates a PDF with the summary table. Trigger download using jsPDF's save method or equivalent."
+        },
+        {
+          "path": "frontend/src/components/CategoryReportSection.tsx",
+          "operation": "modify",
+          "description": "Wire the Export PDF button to call the exportCategoryReportToPDF utility function from frontend/src/utils/pdfExport.ts, passing the current category name, filtered entries, subtotal, and date range."
+        },
+        {
+          "path": "frontend/src/components/FinanceSummarySection.tsx",
+          "operation": "modify",
+          "description": "Wire the Export PDF button to call the exportFinanceSummaryToPDF utility function from frontend/src/utils/pdfExport.ts, passing the computed category totals, grand total, and date range."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add Excel export functionality to each category report and Total Finance Summary",
+      "acceptanceCriteria": [
+        "Each category report has an 'Export Excel' button",
+        "Total Finance Summary has an 'Export Excel' button",
+        "Clicking 'Export Excel' downloads a .xlsx file",
+        "Excel file contains date, description, category, and amount columns plus a totals row"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/excelExport.ts",
+          "operation": "create",
+          "description": "Create utility functions for generating Excel files using a library such as xlsx (SheetJS) or exceljs (install via npm if not present). Export a function exportCategoryReportToExcel that accepts category name, filtered entries array, subtotal, and date range, then generates a .xlsx file with columns: Date, Description, Category, Amount. Include a totals row at the bottom showing the subtotal. Export a function exportFinanceSummaryToExcel that accepts summary data (category name/total pairs, grand total, date range) and generates a .xlsx file with columns: Category, Total Amount, and a grand total row. Trigger download using writeFile or equivalent."
+        },
+        {
+          "path": "frontend/src/components/CategoryReportSection.tsx",
+          "operation": "modify",
+          "description": "Wire the Export Excel button to call the exportCategoryReportToExcel utility function from frontend/src/utils/excelExport.ts, passing the current category name, filtered entries, subtotal, and date range."
+        },
+        {
+          "path": "frontend/src/components/FinanceSummarySection.tsx",
+          "operation": "modify",
+          "description": "Wire the Export Excel button to call the exportFinanceSummaryToExcel utility function from frontend/src/utils/excelExport.ts, passing the computed category totals, grand total, and date range."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Make all expense entries in category reports editable at any time with inline or modal edit forms",
+      "acceptanceCriteria": [
+        "Every expense entry row in each category report has an edit action",
+        "Clicking edit opens a form pre-filled with the entry's current values",
+        "User can update amount, date, description, and category",
+        "Saved changes are persisted to the backend and reflected immediately in the report"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CategoryReportSection.tsx",
+          "operation": "modify",
+          "description": "Add an Edit button or icon to each expense entry row in the table. On click, open the existing SpendingDialog component (frontend/src/components/SpendingDialog.tsx) in edit mode, passing the current expense entry data. The dialog already supports editing and uses the useEditSpending mutation from useQueries.ts, which calls backend editSpending. After successful save, React Query will invalidate the spendings query and the table will re-render with updated data."
+        },
+        {
+          "path": "frontend/src/components/SpendingDialog.tsx",
+          "operation": "modify",
+          "description": "Ensure the SpendingDialog component supports being opened in edit mode from the CategoryReportSection context. If the component already supports edit mode (it does, based on file summary), verify that it pre-fills all fields (category, description, amount, date) and calls the useEditSpending mutation on save. No structural changes needed if edit mode is fully functional; otherwise, ensure the dialog can accept an existing Spending object as a prop and populate form fields accordingly."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add print-optimized layout for each category report and Total Finance Summary with hidden navigation and action buttons",
+      "acceptanceCriteria": [
+        "Each category report and the Total Finance Summary have a 'Print' button",
+        "Print layout hides navigation, sidebars, and action buttons",
+        "Print view shows report title, date range, all entries, and totals",
+        "Print layout is clean and legible on standard paper sizes"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Extend the existing @media print block to hide navigation, header, footer, action buttons (with class .no-print or similar), and other non-essential UI elements during print. Ensure tables, report titles, date ranges, and totals remain visible and are styled for legibility on paper. Add print-specific styles for page breaks, margins, and font sizes as needed."
+        },
+        {
+          "path": "frontend/src/components/CategoryReportSection.tsx",
+          "operation": "modify",
+          "description": "Add a Print button that triggers window.print(). Apply the class .no-print to the action buttons (Export PDF, Export Excel, Print, Edit) so they are hidden in print view. Ensure the report title, date range, entries table, and subtotal are visible and well-formatted for print using existing print styles from frontend/src/index.css."
+        },
+        {
+          "path": "frontend/src/components/FinanceSummarySection.tsx",
+          "operation": "modify",
+          "description": "Add a Print button that triggers window.print(). Apply the class .no-print to the action buttons (Export PDF, Export Excel, Print) so they are hidden in print view. Ensure the summary title, date range, category totals table, and grand total are visible and well-formatted for print using existing print styles from frontend/src/index.css."
+        }
+      ]
+    }
+  ]
+}

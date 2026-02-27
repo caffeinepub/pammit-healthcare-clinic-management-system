@@ -1,0 +1,117 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-27T15:53:55.932Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 6,
+    "implemented": 6,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Add a dedicated report section for each expense category in the Finance page. Each category (e.g., Rent, Salaries, Supplies, Equipment, Utilities, Miscellaneous, etc.) must display its own filtered list of expense entries with subtotals, filterable by date range.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/FinancePage.tsx",
+          "frontend/src/components/CategoryReportSection.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/FinancePage.tsx",
+          "frontend/src/components/CategoryReportSection.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Add a Total Finance Summary Report section that aggregates all expense categories, showing per-category totals and an overall grand total. This summary must be accessible from the Finance page and include a date range filter.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/FinancePage.tsx",
+          "frontend/src/components/FinanceSummarySection.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/FinancePage.tsx",
+          "frontend/src/components/FinanceSummarySection.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add PDF export functionality to each individual category report and to the Total Finance Summary. When the user clicks 'Export PDF' for a report, a print-ready PDF is generated and downloaded containing the report header, date range, category entries (or summary rows), and totals.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/utils/pdfExport.ts",
+          "frontend/src/components/CategoryReportSection.tsx",
+          "frontend/src/components/FinanceSummarySection.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CategoryReportSection.tsx",
+          "frontend/src/components/FinanceSummarySection.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Add Excel (.xlsx) export functionality to each individual category report and to the Total Finance Summary. When the user clicks 'Export Excel', a properly formatted .xlsx file is downloaded with columns for date, description, category, and amount.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/utils/excelExport.ts",
+          "frontend/src/components/CategoryReportSection.tsx",
+          "frontend/src/components/FinanceSummarySection.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CategoryReportSection.tsx",
+          "frontend/src/components/FinanceSummarySection.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Make all expense entries in every category report editable at any time. Each row in a category report must have an edit button that opens an inline or modal form allowing the user to update the amount, date, description, and category. Changes must be persisted to the backend.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/CategoryReportSection.tsx",
+          "frontend/src/components/SpendingDialog.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CategoryReportSection.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Add a print-optimized layout for each category report and the Total Finance Summary. When the user clicks 'Print', the browser print dialog opens showing a clean, formatted view with report title, date range, entries table, and totals — with navigation and action buttons hidden.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/components/CategoryReportSection.tsx",
+          "frontend/src/components/FinanceSummarySection.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/components/CategoryReportSection.tsx",
+          "frontend/src/components/FinanceSummarySection.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/CategoryReportSection.tsx",
+    "frontend/src/components/FinanceSummarySection.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/pages/FinancePage.tsx",
+    "frontend/src/utils/reportExport.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Clinic/medical practice management system with finance section featuring categorized expense reports, PDF/Excel export, and editable entries.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-add-a-dedicated-report-section-for-each-expense-category-in-the-finance-page-each-category-e-g-rent-salaries-supplies-equipment-utilities-miscellaneous-etc-must-display-its-own-filtered-list-of-expense-entries-with-subtotals-filterable-by-date-range",
+      "title": "Add a dedicated report section for each expense category in the Finance page. Each category (e.g., Rent, Salaries, Supplies, Equipment, Utilities, Miscellaneous, etc.) must display its own filtered list of expense entries with subtotals, filterable by date range.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-total-finance-summary-report-section-that-aggregates-all-expense-categories-showing-per-category-totals-and-an-overall-grand-total-this-summary-must-be-accessible-from-the-finance-page-and-include-a-date-range-filter",
+      "title": "Add a Total Finance Summary Report section that aggregates all expense categories, showing per-category totals and an overall grand total. This summary must be accessible from the Finance page and include a date range filter.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-pdf-export-functionality-to-each-individual-category-report-and-to-the-total-finance-summary-when-the-user-clicks-export-pdf-for-a-report-a-print-ready-pdf-is-generated-and-downloaded-containing-the-report-header-date-range-category-entries-or-summary-rows-and-totals",
+      "title": "Add PDF export functionality to each individual category report and to the Total Finance Summary. When the user clicks 'Export PDF' for a report, a print-ready PDF is generated and downloaded containing the report header, date range, category entries (or summary rows), and totals.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-excel-xlsx-export-functionality-to-each-individual-category-report-and-to-the-total-finance-summary-when-the-user-clicks-export-excel-a-properly-formatted-xlsx-file-is-downloaded-with-columns-for-date-description-category-and-amount",
+      "title": "Add Excel (.xlsx) export functionality to each individual category report and to the Total Finance Summary. When the user clicks 'Export Excel', a properly formatted .xlsx file is downloaded with columns for date, description, category, and amount.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-all-expense-entries-in-every-category-report-editable-at-any-time-each-row-in-a-category-report-must-have-an-edit-button-that-opens-an-inline-or-modal-form-allowing-the-user-to-update-the-amount-date-description-and-category-changes-must-be-persisted-to-the-backend",
+      "title": "Make all expense entries in every category report editable at any time. Each row in a category report must have an edit button that opens an inline or modal form allowing the user to update the amount, date, description, and category. Changes must be persisted to the backend.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-print-optimized-layout-for-each-category-report-and-the-total-finance-summary-when-the-user-clicks-print-the-browser-print-dialog-opens-showing-a-clean-formatted-view-with-report-title-date-range-entries-table-and-totals-with-navigation-and-action-buttons-hidden",
+      "title": "Add a print-optimized layout for each category report and the Total Finance Summary. When the user clicks 'Print', the browser print dialog opens showing a clean, formatted view with report title, date range, entries table, and totals — with navigation and action buttons hidden.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Finance section: separate expense reports by category, total finance summary, PDF/Excel export, editable entries, and printable layouts",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Clinic Manager",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

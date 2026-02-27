@@ -1,0 +1,137 @@
+{
+  "kind": "build_request",
+  "title": "Finance Section: Separate Category Reports with PDF/Excel Export and Editable Entries",
+  "projectName": "Clinic Manager",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add a dedicated report section for each expense category in the Finance page. Each category (e.g., Rent, Salaries, Supplies, Equipment, Utilities, Miscellaneous, etc.) must display its own filtered list of expense entries with subtotals, filterable by date range.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-finance-1"
+        ],
+        "quotes": [
+          "make all expenses report separately for total Finance with each category report generation"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each expense category renders in its own report section or tab",
+        "Each category section shows all entries belonging to that category",
+        "Each category section shows a subtotal sum for filtered entries",
+        "Date range filter applies per category report"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add a Total Finance Summary Report section that aggregates all expense categories, showing per-category totals and an overall grand total. This summary must be accessible from the Finance page and include a date range filter.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-finance-1"
+        ],
+        "quotes": [
+          "total Finance with each category report generation"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A Total Finance Summary section is visible on the Finance page",
+        "Summary shows each category name alongside its total amount",
+        "Summary shows a grand total across all categories",
+        "Summary respects the selected date range filter"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add PDF export functionality to each individual category report and to the Total Finance Summary. When the user clicks 'Export PDF' for a report, a print-ready PDF is generated and downloaded containing the report header, date range, category entries (or summary rows), and totals.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-finance-1"
+        ],
+        "quotes": [
+          "printable into pdf"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each category report has an 'Export PDF' button",
+        "Total Finance Summary has an 'Export PDF' button",
+        "Clicking 'Export PDF' downloads a formatted PDF of that report",
+        "PDF includes report title, date range, line items, and totals"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add Excel (.xlsx) export functionality to each individual category report and to the Total Finance Summary. When the user clicks 'Export Excel', a properly formatted .xlsx file is downloaded with columns for date, description, category, and amount.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-finance-1"
+        ],
+        "quotes": [
+          "printable into pdf and excel"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each category report has an 'Export Excel' button",
+        "Total Finance Summary has an 'Export Excel' button",
+        "Clicking 'Export Excel' downloads a .xlsx file",
+        "Excel file contains date, description, category, and amount columns plus a totals row"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Make all expense entries in every category report editable at any time. Each row in a category report must have an edit button that opens an inline or modal form allowing the user to update the amount, date, description, and category. Changes must be persisted to the backend.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-finance-1"
+        ],
+        "quotes": [
+          "editable any time"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Every expense entry row in each category report has an edit action",
+        "Clicking edit opens a form pre-filled with the entry's current values",
+        "User can update amount, date, description, and category",
+        "Saved changes are persisted to the backend and reflected immediately in the report"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add a print-optimized layout for each category report and the Total Finance Summary. When the user clicks 'Print', the browser print dialog opens showing a clean, formatted view with report title, date range, entries table, and totals — with navigation and action buttons hidden.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-finance-1"
+        ],
+        "quotes": [
+          "printable into pdf and excel"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each category report and the Total Finance Summary have a 'Print' button",
+        "Print layout hides navigation, sidebars, and action buttons",
+        "Print view shows report title, date range, all entries, and totals",
+        "Print layout is clean and legible on standard paper sizes"
+      ]
+    }
+  ],
+  "constraints": [
+    "All Motoko logic must remain in the single backend/main.mo actor file",
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
+    "Expense edit operations must use the existing backend mutation patterns established in useQueries.ts"
+  ],
+  "nonGoals": [
+    "Adding new expense categories beyond those already supported by the backend",
+    "Changing the overall Finance page navigation structure",
+    "Real-time collaborative editing of expense entries",
+    "Email delivery of reports"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

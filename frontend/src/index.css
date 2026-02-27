@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: oklch(0.99 0.005 240);
+    --foreground: oklch(0.15 0.02 240);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.15 0.02 240);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.15 0.02 240);
+    --primary: oklch(0.35 0.12 240);
+    --primary-foreground: oklch(0.98 0.005 240);
+    --secondary: oklch(0.94 0.01 240);
+    --secondary-foreground: oklch(0.25 0.05 240);
+    --muted: oklch(0.95 0.008 240);
+    --muted-foreground: oklch(0.5 0.02 240);
+    --accent: oklch(0.92 0.04 200);
+    --accent-foreground: oklch(0.2 0.06 200);
+    --destructive: oklch(0.55 0.22 25);
+    --destructive-foreground: oklch(0.98 0.005 25);
+    --border: oklch(0.88 0.01 240);
+    --input: oklch(0.88 0.01 240);
+    --ring: oklch(0.35 0.12 240);
+    --radius: 0.5rem;
+    --success: oklch(0.55 0.18 145);
+    --success-foreground: oklch(0.98 0.005 145);
+    --warning: oklch(0.7 0.18 75);
+    --warning-foreground: oklch(0.15 0.05 75);
+  }
+
+  .dark {
+    --background: oklch(0.13 0.02 240);
+    --foreground: oklch(0.93 0.01 240);
+    --card: oklch(0.17 0.025 240);
+    --card-foreground: oklch(0.93 0.01 240);
+    --popover: oklch(0.17 0.025 240);
+    --popover-foreground: oklch(0.93 0.01 240);
+    --primary: oklch(0.65 0.12 240);
+    --primary-foreground: oklch(0.1 0.02 240);
+    --secondary: oklch(0.22 0.03 240);
+    --secondary-foreground: oklch(0.88 0.01 240);
+    --muted: oklch(0.22 0.025 240);
+    --muted-foreground: oklch(0.6 0.02 240);
+    --accent: oklch(0.28 0.06 200);
+    --accent-foreground: oklch(0.88 0.04 200);
+    --destructive: oklch(0.55 0.22 25);
+    --destructive-foreground: oklch(0.98 0.005 25);
+    --border: oklch(0.28 0.025 240);
+    --input: oklch(0.28 0.025 240);
+    --ring: oklch(0.65 0.12 240);
+    --success: oklch(0.55 0.18 145);
+    --success-foreground: oklch(0.98 0.005 145);
+    --warning: oklch(0.7 0.18 75);
+    --warning-foreground: oklch(0.15 0.05 75);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Enhanced focus-visible styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+/* Skip to content link */
+.skip-to-content {
+  @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:shadow-lg;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* React Quill editor styling */
+.ql-toolbar {
+  @apply border-border rounded-t-md bg-muted/30;
+}
+.ql-container {
+  @apply border-border rounded-b-md;
+}
+.ql-editor {
+  @apply min-h-[120px] text-foreground;
+}
+.dark .ql-toolbar .ql-stroke {
+  stroke: hsl(var(--foreground));
+}
+.dark .ql-toolbar .ql-fill {
+  fill: hsl(var(--foreground));
+}
+.dark .ql-toolbar .ql-picker {
+  color: hsl(var(--foreground));
+}
+
+/* Print styles */
+@media print {
+  header,
+  nav,
+  footer,
+  .no-print,
+  [data-sidebar],
+  aside {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12px;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  th {
+    background-color: #1a3a5c !important;
+    color: white !important;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 11px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 11px;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  .edit-col {
+    display: none !important;
+  }
+}
